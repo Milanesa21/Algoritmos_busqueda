@@ -3,6 +3,9 @@ Si 'x' esta en la lista, devuelve su posicion
 si no esta, devuelve '-1'
 """
 
+# Se importa la libreria time para medir el tiempo de ejecucion
+import time
+
 # Se recorren uno a uno los elementos de la lista 
 # y se los compara con el valor buscado
 
@@ -20,15 +23,28 @@ def busqueda_lineal(lista, x):
     return -1
 
 
+# Se crea una funcion para medir el tiempo de ejecucion
+def medir_tiempo(func, *args):
+    # Se toma el tiempo de inicio
+    inicio = time.time()
+    # Se ejecuta la funcion con los argumentos
+    resultado = func(*args)
+    # Se toma el tiempo de finalizacion
+    fin = time.time()
+    # Se muestra el resultado y el tiempo de ejecucion  
+    tiempo_transcurrido = fin - inicio
+    print(f"Resultado: {resultado}, Tiempo de ejecución: {tiempo_transcurrido:.8f} segundos")
+
+
 """
 Resultados de ejemplo:
- >>> busqueda_lineal([1, 4, 54, 3, 0, 34, 23, 12], 2)
--1
->>> busqueda_lineal([1, 4, 54, 3, 0, 34, 23, 12], 23)
-6
->>> busqueda_lineal([1, 4, 54, 3, 0, 34, 23, 12], 4)
-1
+Resultado: -1, Tiempo de ejecución: 0.00000286 segundos
+Resultado: 6, Tiempo de ejecución: 0.00000191 segundos
+Resultado: 1, Tiempo de ejecución: 0.00000167 segundos
 """
-print(busqueda_lineal([1, 4, 54, 3, 0, 34, 23, 12], 2))
-print(busqueda_lineal([1, 4, 54, 3, 0, 34, 23, 12], 23))
-print(busqueda_lineal([1, 4, 54, 3, 0, 34, 23, 12], 4))
+
+
+
+medir_tiempo(busqueda_lineal, [1, 4, 54, 3, 0, 34, 23, 12], 2)
+medir_tiempo(busqueda_lineal, [1, 4, 54, 3, 0, 34, 23, 12], 23)
+medir_tiempo(busqueda_lineal, [1, 4, 54, 3, 0, 34, 23, 12], 4)
